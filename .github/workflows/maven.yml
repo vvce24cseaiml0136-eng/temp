@@ -1,5 +1,5 @@
 
-name: Selenium TestNG CI/CD Pipeline
+name: junit
 
 # Trigger workflow on push and pull requests to main
 on:
@@ -62,8 +62,8 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB-USERNAME }}
+          password: ${{ secrets.DOCKERHUB-TOKEN }}
 
       # Step 3: Set up Docker Buildx
       - name: Set up Docker Buildx
@@ -77,5 +77,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/temp:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/temp:${{ github.sha }}
+            ${{ secrets.DOCKERHUB-USERNAME }}/temp:latest
+            ${{ secrets.DOCKERHUB-USERNAME }}/temp:${{ github.sha }}
